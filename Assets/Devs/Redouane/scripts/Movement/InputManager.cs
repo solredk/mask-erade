@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private bool lockCursor;
 
-    private Masks currentMask = Masks.none;
+    [SerializeField] private Masks currentMask = Masks.none;
     private void Start()
     {
         if (lockCursor)
@@ -30,14 +30,25 @@ public class InputManager : MonoBehaviour
     public void DoMoving(InputAction.CallbackContext context)
     {
         Vector2 moveInput = context.ReadValue<Vector2>();
-        playerController.Moving(moveInput); 
+        playerController.Moving(moveInput, currentMask); 
     } 
+
+    public void DoSprint(InputAction.CallbackContext context)
+    {
+
+    }
 
     public void DoJump(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            playerController.Jump();
+            playerController.Jump(currentMask);
         }
+    }
+
+
+    public void DoPause(InputAction.CallbackContext context)
+    {
+
     }
 }

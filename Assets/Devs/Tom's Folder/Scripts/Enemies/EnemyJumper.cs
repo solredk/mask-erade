@@ -188,18 +188,15 @@ public class EnemyJumper : EnemyBase
         {
             AudioManager.instance.Play("SlamGround", 0.5f);
             RaycastHitRange = 0.80f;
-            StartCoroutine(JumpCoolDownCounter());
+            StartCoroutine(JumpCoolDownCounter(0.5f));
         }
     }
 
-    private IEnumerator JumpCoolDownCounter()
+    private IEnumerator JumpCoolDownCounter(float CoolDown)
     {
-        while (JumpCoolDown > 0)
-        {
-            JumpCoolDown -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        if (JumpCoolDown < 0 && Jumped == true)
+        yield return new WaitForSeconds(0.5f);
+        JumpCoolDown = 0;
+        if (JumpCoolDown <= 0 && Jumped == true)
         {
             Jumped = false;
         }

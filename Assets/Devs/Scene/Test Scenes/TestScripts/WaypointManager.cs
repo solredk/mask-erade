@@ -116,7 +116,8 @@ public class WaypointManager : MonoBehaviour
 
         if (controller != null)
         {
-        ;
+
+            OnRespawn.Invoke();
             controller.enabled = false;
             player.position = CurrentRespawnPosition;
        

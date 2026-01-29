@@ -1,9 +1,9 @@
 {
     "version": 1,
-    "name": "PlayerInputs",
+    "name": "PlayerControls",
     "maps": [
         {
-            "name": "Moving",
+            "name": "GamePlay",
             "id": "4e662345-0b1b-4e03-a245-7c3a2836c450",
             "actions": [
                 {
@@ -37,6 +37,69 @@
                     "name": "Sprinting",
                     "type": "Button",
                     "id": "34843b4d-ac84-466d-8f0e-669114f236bf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EquipMaskNone",
+                    "type": "Button",
+                    "id": "1052ff39-499d-4efe-aedf-e872534e5d30",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EquipMaskFrog",
+                    "type": "Button",
+                    "id": "36e6b0ae-415e-4a8f-aa07-83a37d8e400b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EquipOwlMask",
+                    "type": "Button",
+                    "id": "0ac31f1f-ae37-433b-a9f1-7d217569796a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EquipMoleMask",
+                    "type": "Button",
+                    "id": "9221da6a-e31e-4f46-9f41-c8a45adc459c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EquipMouseMask",
+                    "type": "Button",
+                    "id": "0b358efe-d1a2-492e-8b55-6bba19650e49",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EquipBatMask",
+                    "type": "Button",
+                    "id": "2e7bd06c-1f21-4105-81b9-6fd6693df9ef",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EquipCatMask",
+                    "type": "Button",
+                    "id": "a2f43474-74da-46c7-9588-f1c5b969b5cf",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -219,6 +282,153 @@
                     "action": "Sprinting",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0a9d27b-d89c-4c4d-b7cb-e35244588ec2",
+                    "path": "<Keyboard>/0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipMaskNone",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "177a15db-d2a1-472f-9caa-4a7381a59a8b",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipMaskFrog",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54c8b4b1-00c5-4432-87c3-759a886da65d",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipOwlMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e87a8958-844f-4007-aabd-39652e320746",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipMoleMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1740406-2198-459a-b875-487826270643",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipMouseMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3d956e5-0f4b-4911-bdb0-e97a34889e8c",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipBatMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eaed4168-a4a5-49fd-9468-7af55ed69957",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipCatMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "CameraControls",
+            "id": "0a3fbf5b-3382-4e39-8b77-9324003413e6",
+            "actions": [
+                {
+                    "name": "MouseZoom",
+                    "type": "Value",
+                    "id": "8354f109-e147-47a9-aee5-759729565ec6",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "GamepadZoom",
+                    "type": "Value",
+                    "id": "1a6b0932-9c62-4414-80f9-35729674cee4",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1a6dd06b-2506-4ce6-859c-d161e2412796",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseZoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "2df0d3d8-d5f3-4986-9218-f8b2339e6175",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GamepadZoom",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "6664eea3-39dd-43e7-90a3-32f4d1fe7d76",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GamepadZoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "60881663-d28c-403c-9896-a8a105a6598c",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GamepadZoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

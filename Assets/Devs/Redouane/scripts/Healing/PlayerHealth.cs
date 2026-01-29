@@ -35,6 +35,7 @@ public class PlayerHealth : HealthSystem
     public override void TakeDamage(int damage)
     {
         Debug.Log("Player took damage: " + damage);
+        lerpTimer = 0f;
         base.TakeDamage(damage);
         UpdateHealthUI();
         if (healEvent != null)
@@ -44,7 +45,8 @@ public class PlayerHealth : HealthSystem
 
     public override void HealDamage(int healing)
     {
-        base.TakeDamage(healing);
+        base.HealDamage(healing);
+        lerpTimer = 0f;
         UpdateHealthUI();
         if (healEvent != null)
             healEvent.Invoke();

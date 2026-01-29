@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager GameInstance { get; private set; }
 
+    private GameObject playerObject;
     private GameState currentState;
-
+   
     [SerializeField] private GameObject pauseScreen;
 
     private void Awake()
@@ -23,13 +24,20 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         GameInstance = this;
         DontDestroyOnLoad(gameObject);
     }
-
     private void Start()
     {
+        SceneManager.sceneLoaded += PlayerScene;
+    }
+    private void PlayerScene(Scene scene, LoadSceneMode mode)
+    {
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject == null)
+        {
+            Debug.LogWarning("Couldn't find player");
+        }
     }
 
     private void Update()
@@ -58,7 +66,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("No more levels. Game complete!");
             return;
         }
-
         SceneManager.LoadScene(nextIndex);
     }
 
@@ -89,4 +96,9 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= PlayerScene;
+    }
 }
+

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isSprinting = false;
     public bool isWalking = false;
+    public bool isGliding = false;
 
     private Masks currentMask;
 
@@ -27,12 +28,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float BaseJumpHeight = 2f;
     [SerializeField] private float frogJumpHeight = 4f;
     [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float glidingGravity = -2.0f;
 
     [SerializeField] private float fallMultiplier = 2.5f;
     [SerializeField] private float lowJumpMultiplier = 2.0f;
     [SerializeField] private float fallAnimThreshold = -0.1f;
     private float jumpHeight;
     private bool jumpHeld;
+
+    [Header("Gliding stats")]
+    [SerializeField] private float glideFallSpeed = -4f;   
+    [SerializeField] private float glideSmooth = 8f;       
+    [SerializeField] private float maxFallSpeed = -20f;
 
     [Header("Camera")]
     [SerializeField] private Transform cameraTransform;
@@ -47,6 +54,7 @@ public class PlayerController : MonoBehaviour
         UpdateAnimatorParameters();
 
         UpdateMaskStats();
+   
 
         if (isSprinting)
         {
@@ -76,20 +84,31 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Falling");
         }
 
-        float gravityMultiplier = 1f;
-
-        if (verticalVelocity < 0f)
+        if (isGliding && !controller.isGrounded && verticalVelocity < 0f)
         {
-            gravityMultiplier = fallMultiplier;
+            // gliding: forceer een zachte daalsnelheid
+            verticalVelocity = Mathf.Lerp(verticalVelocity, glideFallSpeed, glideSmooth * Time.deltaTime);
+        }
+        else
+        {
+            // normale gravity
+            float gravityMultiplier = 1f;
+
+            if (verticalVelocity < 0f)
+                gravityMultiplier = fallMultiplier;
+            else if (verticalVelocity > 0f && !jumpHeld)
+                gravityMultiplier = lowJumpMultiplier;
+
+            verticalVelocity += gravity * gravityMultiplier * Time.deltaTime;
+
+            // normale terminal velocity
+            verticalVelocity = Mathf.Max(verticalVelocity, maxFallSpeed);
         }
 
-        else if (verticalVelocity > 0f && !jumpHeld)
+        if (controller.isGrounded)
         {
-            gravityMultiplier = lowJumpMultiplier;
+            isGliding = false;
         }
-
-        verticalVelocity += gravity * gravityMultiplier * Time.deltaTime;
-
 
         Vector3 velocity = moveDirection * currentSpeed;
         velocity.y = verticalVelocity;
@@ -109,7 +128,14 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimatorParameters()
     {
         animator.SetBool("Walking", isWalking);
-        animator.SetBool("Sprinting", isSprinting);
+        if(isWalking && isSprinting)
+        {
+        animator.SetBool("Sprinting", true);
+        }
+        else if (!isWalking || !isSprinting)
+        {
+            animator.SetBool("Sprinting", false);
+        }
         animator.SetBool("Grounded", controller.isGrounded);
     }
 
@@ -137,6 +163,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     private IEnumerator JumpDelay()
     {
         animator.SetTrigger("Jumping");
@@ -149,10 +176,5 @@ public class PlayerController : MonoBehaviour
     public void SetJumpHeld(bool held)
     {
         jumpHeld = held;
-    }
-
-    private void OnDisable()
-    {
-       
     }
 }

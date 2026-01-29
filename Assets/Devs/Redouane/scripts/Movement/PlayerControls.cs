@@ -129,7 +129,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EquipMaskNone"",
+                    ""name"": ""MaskNone"",
                     ""type"": ""Button"",
                     ""id"": ""1052ff39-499d-4efe-aedf-e872534e5d30"",
                     ""expectedControlType"": """",
@@ -138,7 +138,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EquipMaskFrog"",
+                    ""name"": ""MaskFrog"",
                     ""type"": ""Button"",
                     ""id"": ""36e6b0ae-415e-4a8f-aa07-83a37d8e400b"",
                     ""expectedControlType"": """",
@@ -147,7 +147,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EquipOwlMask"",
+                    ""name"": ""OwlMask"",
                     ""type"": ""Button"",
                     ""id"": ""0ac31f1f-ae37-433b-a9f1-7d217569796a"",
                     ""expectedControlType"": """",
@@ -156,7 +156,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EquipMoleMask"",
+                    ""name"": ""MoleMask"",
                     ""type"": ""Button"",
                     ""id"": ""9221da6a-e31e-4f46-9f41-c8a45adc459c"",
                     ""expectedControlType"": """",
@@ -165,7 +165,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EquipMouseMask"",
+                    ""name"": ""MouseMask"",
                     ""type"": ""Button"",
                     ""id"": ""0b358efe-d1a2-492e-8b55-6bba19650e49"",
                     ""expectedControlType"": """",
@@ -174,7 +174,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EquipBatMask"",
+                    ""name"": ""BatMask"",
                     ""type"": ""Button"",
                     ""id"": ""2e7bd06c-1f21-4105-81b9-6fd6693df9ef"",
                     ""expectedControlType"": """",
@@ -183,7 +183,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EquipCatMask"",
+                    ""name"": ""CatMask"",
                     ""type"": ""Button"",
                     ""id"": ""a2f43474-74da-46c7-9588-f1c5b969b5cf"",
                     ""expectedControlType"": """",
@@ -376,7 +376,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EquipMaskNone"",
+                    ""action"": ""MaskNone"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -387,7 +387,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EquipMaskFrog"",
+                    ""action"": ""MaskFrog"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -398,7 +398,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EquipOwlMask"",
+                    ""action"": ""OwlMask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -409,7 +409,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EquipMoleMask"",
+                    ""action"": ""MoleMask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -420,7 +420,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EquipMouseMask"",
+                    ""action"": ""MouseMask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -431,7 +431,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EquipBatMask"",
+                    ""action"": ""BatMask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -442,7 +442,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EquipCatMask"",
+                    ""action"": ""CatMask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -527,13 +527,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_GamePlay_Jumping = m_GamePlay.FindAction("Jumping", throwIfNotFound: true);
         m_GamePlay_PauseGame = m_GamePlay.FindAction("PauseGame", throwIfNotFound: true);
         m_GamePlay_Sprinting = m_GamePlay.FindAction("Sprinting", throwIfNotFound: true);
-        m_GamePlay_EquipMaskNone = m_GamePlay.FindAction("EquipMaskNone", throwIfNotFound: true);
-        m_GamePlay_EquipMaskFrog = m_GamePlay.FindAction("EquipMaskFrog", throwIfNotFound: true);
-        m_GamePlay_EquipOwlMask = m_GamePlay.FindAction("EquipOwlMask", throwIfNotFound: true);
-        m_GamePlay_EquipMoleMask = m_GamePlay.FindAction("EquipMoleMask", throwIfNotFound: true);
-        m_GamePlay_EquipMouseMask = m_GamePlay.FindAction("EquipMouseMask", throwIfNotFound: true);
-        m_GamePlay_EquipBatMask = m_GamePlay.FindAction("EquipBatMask", throwIfNotFound: true);
-        m_GamePlay_EquipCatMask = m_GamePlay.FindAction("EquipCatMask", throwIfNotFound: true);
+        m_GamePlay_MaskNone = m_GamePlay.FindAction("MaskNone", throwIfNotFound: true);
+        m_GamePlay_MaskFrog = m_GamePlay.FindAction("MaskFrog", throwIfNotFound: true);
+        m_GamePlay_OwlMask = m_GamePlay.FindAction("OwlMask", throwIfNotFound: true);
+        m_GamePlay_MoleMask = m_GamePlay.FindAction("MoleMask", throwIfNotFound: true);
+        m_GamePlay_MouseMask = m_GamePlay.FindAction("MouseMask", throwIfNotFound: true);
+        m_GamePlay_BatMask = m_GamePlay.FindAction("BatMask", throwIfNotFound: true);
+        m_GamePlay_CatMask = m_GamePlay.FindAction("CatMask", throwIfNotFound: true);
         // CameraControls
         m_CameraControls = asset.FindActionMap("CameraControls", throwIfNotFound: true);
         m_CameraControls_MouseZoom = m_CameraControls.FindAction("MouseZoom", throwIfNotFound: true);
@@ -623,13 +623,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Jumping;
     private readonly InputAction m_GamePlay_PauseGame;
     private readonly InputAction m_GamePlay_Sprinting;
-    private readonly InputAction m_GamePlay_EquipMaskNone;
-    private readonly InputAction m_GamePlay_EquipMaskFrog;
-    private readonly InputAction m_GamePlay_EquipOwlMask;
-    private readonly InputAction m_GamePlay_EquipMoleMask;
-    private readonly InputAction m_GamePlay_EquipMouseMask;
-    private readonly InputAction m_GamePlay_EquipBatMask;
-    private readonly InputAction m_GamePlay_EquipCatMask;
+    private readonly InputAction m_GamePlay_MaskNone;
+    private readonly InputAction m_GamePlay_MaskFrog;
+    private readonly InputAction m_GamePlay_OwlMask;
+    private readonly InputAction m_GamePlay_MoleMask;
+    private readonly InputAction m_GamePlay_MouseMask;
+    private readonly InputAction m_GamePlay_BatMask;
+    private readonly InputAction m_GamePlay_CatMask;
     /// <summary>
     /// Provides access to input actions defined in input action map "GamePlay".
     /// </summary>
@@ -658,33 +658,33 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Sprinting => m_Wrapper.m_GamePlay_Sprinting;
         /// <summary>
-        /// Provides access to the underlying input action "GamePlay/EquipMaskNone".
+        /// Provides access to the underlying input action "GamePlay/MaskNone".
         /// </summary>
-        public InputAction @EquipMaskNone => m_Wrapper.m_GamePlay_EquipMaskNone;
+        public InputAction @MaskNone => m_Wrapper.m_GamePlay_MaskNone;
         /// <summary>
-        /// Provides access to the underlying input action "GamePlay/EquipMaskFrog".
+        /// Provides access to the underlying input action "GamePlay/MaskFrog".
         /// </summary>
-        public InputAction @EquipMaskFrog => m_Wrapper.m_GamePlay_EquipMaskFrog;
+        public InputAction @MaskFrog => m_Wrapper.m_GamePlay_MaskFrog;
         /// <summary>
-        /// Provides access to the underlying input action "GamePlay/EquipOwlMask".
+        /// Provides access to the underlying input action "GamePlay/OwlMask".
         /// </summary>
-        public InputAction @EquipOwlMask => m_Wrapper.m_GamePlay_EquipOwlMask;
+        public InputAction @OwlMask => m_Wrapper.m_GamePlay_OwlMask;
         /// <summary>
-        /// Provides access to the underlying input action "GamePlay/EquipMoleMask".
+        /// Provides access to the underlying input action "GamePlay/MoleMask".
         /// </summary>
-        public InputAction @EquipMoleMask => m_Wrapper.m_GamePlay_EquipMoleMask;
+        public InputAction @MoleMask => m_Wrapper.m_GamePlay_MoleMask;
         /// <summary>
-        /// Provides access to the underlying input action "GamePlay/EquipMouseMask".
+        /// Provides access to the underlying input action "GamePlay/MouseMask".
         /// </summary>
-        public InputAction @EquipMouseMask => m_Wrapper.m_GamePlay_EquipMouseMask;
+        public InputAction @MouseMask => m_Wrapper.m_GamePlay_MouseMask;
         /// <summary>
-        /// Provides access to the underlying input action "GamePlay/EquipBatMask".
+        /// Provides access to the underlying input action "GamePlay/BatMask".
         /// </summary>
-        public InputAction @EquipBatMask => m_Wrapper.m_GamePlay_EquipBatMask;
+        public InputAction @BatMask => m_Wrapper.m_GamePlay_BatMask;
         /// <summary>
-        /// Provides access to the underlying input action "GamePlay/EquipCatMask".
+        /// Provides access to the underlying input action "GamePlay/CatMask".
         /// </summary>
-        public InputAction @EquipCatMask => m_Wrapper.m_GamePlay_EquipCatMask;
+        public InputAction @CatMask => m_Wrapper.m_GamePlay_CatMask;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -723,27 +723,27 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Sprinting.started += instance.OnSprinting;
             @Sprinting.performed += instance.OnSprinting;
             @Sprinting.canceled += instance.OnSprinting;
-            @EquipMaskNone.started += instance.OnEquipMaskNone;
-            @EquipMaskNone.performed += instance.OnEquipMaskNone;
-            @EquipMaskNone.canceled += instance.OnEquipMaskNone;
-            @EquipMaskFrog.started += instance.OnEquipMaskFrog;
-            @EquipMaskFrog.performed += instance.OnEquipMaskFrog;
-            @EquipMaskFrog.canceled += instance.OnEquipMaskFrog;
-            @EquipOwlMask.started += instance.OnEquipOwlMask;
-            @EquipOwlMask.performed += instance.OnEquipOwlMask;
-            @EquipOwlMask.canceled += instance.OnEquipOwlMask;
-            @EquipMoleMask.started += instance.OnEquipMoleMask;
-            @EquipMoleMask.performed += instance.OnEquipMoleMask;
-            @EquipMoleMask.canceled += instance.OnEquipMoleMask;
-            @EquipMouseMask.started += instance.OnEquipMouseMask;
-            @EquipMouseMask.performed += instance.OnEquipMouseMask;
-            @EquipMouseMask.canceled += instance.OnEquipMouseMask;
-            @EquipBatMask.started += instance.OnEquipBatMask;
-            @EquipBatMask.performed += instance.OnEquipBatMask;
-            @EquipBatMask.canceled += instance.OnEquipBatMask;
-            @EquipCatMask.started += instance.OnEquipCatMask;
-            @EquipCatMask.performed += instance.OnEquipCatMask;
-            @EquipCatMask.canceled += instance.OnEquipCatMask;
+            @MaskNone.started += instance.OnMaskNone;
+            @MaskNone.performed += instance.OnMaskNone;
+            @MaskNone.canceled += instance.OnMaskNone;
+            @MaskFrog.started += instance.OnMaskFrog;
+            @MaskFrog.performed += instance.OnMaskFrog;
+            @MaskFrog.canceled += instance.OnMaskFrog;
+            @OwlMask.started += instance.OnOwlMask;
+            @OwlMask.performed += instance.OnOwlMask;
+            @OwlMask.canceled += instance.OnOwlMask;
+            @MoleMask.started += instance.OnMoleMask;
+            @MoleMask.performed += instance.OnMoleMask;
+            @MoleMask.canceled += instance.OnMoleMask;
+            @MouseMask.started += instance.OnMouseMask;
+            @MouseMask.performed += instance.OnMouseMask;
+            @MouseMask.canceled += instance.OnMouseMask;
+            @BatMask.started += instance.OnBatMask;
+            @BatMask.performed += instance.OnBatMask;
+            @BatMask.canceled += instance.OnBatMask;
+            @CatMask.started += instance.OnCatMask;
+            @CatMask.performed += instance.OnCatMask;
+            @CatMask.canceled += instance.OnCatMask;
         }
 
         /// <summary>
@@ -767,27 +767,27 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Sprinting.started -= instance.OnSprinting;
             @Sprinting.performed -= instance.OnSprinting;
             @Sprinting.canceled -= instance.OnSprinting;
-            @EquipMaskNone.started -= instance.OnEquipMaskNone;
-            @EquipMaskNone.performed -= instance.OnEquipMaskNone;
-            @EquipMaskNone.canceled -= instance.OnEquipMaskNone;
-            @EquipMaskFrog.started -= instance.OnEquipMaskFrog;
-            @EquipMaskFrog.performed -= instance.OnEquipMaskFrog;
-            @EquipMaskFrog.canceled -= instance.OnEquipMaskFrog;
-            @EquipOwlMask.started -= instance.OnEquipOwlMask;
-            @EquipOwlMask.performed -= instance.OnEquipOwlMask;
-            @EquipOwlMask.canceled -= instance.OnEquipOwlMask;
-            @EquipMoleMask.started -= instance.OnEquipMoleMask;
-            @EquipMoleMask.performed -= instance.OnEquipMoleMask;
-            @EquipMoleMask.canceled -= instance.OnEquipMoleMask;
-            @EquipMouseMask.started -= instance.OnEquipMouseMask;
-            @EquipMouseMask.performed -= instance.OnEquipMouseMask;
-            @EquipMouseMask.canceled -= instance.OnEquipMouseMask;
-            @EquipBatMask.started -= instance.OnEquipBatMask;
-            @EquipBatMask.performed -= instance.OnEquipBatMask;
-            @EquipBatMask.canceled -= instance.OnEquipBatMask;
-            @EquipCatMask.started -= instance.OnEquipCatMask;
-            @EquipCatMask.performed -= instance.OnEquipCatMask;
-            @EquipCatMask.canceled -= instance.OnEquipCatMask;
+            @MaskNone.started -= instance.OnMaskNone;
+            @MaskNone.performed -= instance.OnMaskNone;
+            @MaskNone.canceled -= instance.OnMaskNone;
+            @MaskFrog.started -= instance.OnMaskFrog;
+            @MaskFrog.performed -= instance.OnMaskFrog;
+            @MaskFrog.canceled -= instance.OnMaskFrog;
+            @OwlMask.started -= instance.OnOwlMask;
+            @OwlMask.performed -= instance.OnOwlMask;
+            @OwlMask.canceled -= instance.OnOwlMask;
+            @MoleMask.started -= instance.OnMoleMask;
+            @MoleMask.performed -= instance.OnMoleMask;
+            @MoleMask.canceled -= instance.OnMoleMask;
+            @MouseMask.started -= instance.OnMouseMask;
+            @MouseMask.performed -= instance.OnMouseMask;
+            @MouseMask.canceled -= instance.OnMouseMask;
+            @BatMask.started -= instance.OnBatMask;
+            @BatMask.performed -= instance.OnBatMask;
+            @BatMask.canceled -= instance.OnBatMask;
+            @CatMask.started -= instance.OnCatMask;
+            @CatMask.performed -= instance.OnCatMask;
+            @CatMask.canceled -= instance.OnCatMask;
         }
 
         /// <summary>
@@ -964,54 +964,54 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSprinting(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "EquipMaskNone" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "MaskNone" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquipMaskNone(InputAction.CallbackContext context);
+        void OnMaskNone(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "EquipMaskFrog" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "MaskFrog" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquipMaskFrog(InputAction.CallbackContext context);
+        void OnMaskFrog(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "EquipOwlMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "OwlMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquipOwlMask(InputAction.CallbackContext context);
+        void OnOwlMask(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "EquipMoleMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "MoleMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquipMoleMask(InputAction.CallbackContext context);
+        void OnMoleMask(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "EquipMouseMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "MouseMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquipMouseMask(InputAction.CallbackContext context);
+        void OnMouseMask(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "EquipBatMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "BatMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquipBatMask(InputAction.CallbackContext context);
+        void OnBatMask(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "EquipCatMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "CatMask" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquipCatMask(InputAction.CallbackContext context);
+        void OnCatMask(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "CameraControls" which allows adding and removing callbacks.

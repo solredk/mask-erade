@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1757159375435459156}
   - component: {fileID: 72760169798457792}
   - component: {fileID: 2825103040687134663}
+  - component: {fileID: 6587137138071529231}
   m_Layer: 0
   m_Name: EnemyJumper
   m_TagString: Untagged
@@ -147,8 +148,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   Speed: 5
   M_isGrounded: 0
-  RayCastHitRangeAmount: 0.7
-  Jumper: {fileID: 6117826257748894897}
+  RayCastHitRangeAmount: 0.4
 --- !u!195 &72760169798457792
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -198,3 +198,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &6587137138071529231
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870325507310175345}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}

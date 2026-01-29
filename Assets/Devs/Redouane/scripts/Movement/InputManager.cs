@@ -12,7 +12,6 @@ public enum Masks
     bat,
     cat
 }
-
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
@@ -20,7 +19,7 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private bool lockCursor;
 
-    [SerializeField] private Masks currentMask = Masks.none;
+    public Masks currentMask = Masks.none;
     private void Start()
     {
         if (lockCursor)
@@ -29,6 +28,7 @@ public class InputManager : MonoBehaviour
             Cursor.visible = false;
         }
     }
+
     public void DoMoving(InputAction.CallbackContext context)
     {
         if (playerController == null) { return; }

@@ -22,7 +22,7 @@ public class EnemyJumper : EnemyBase
 
     private void Start()
     {
-        RaycastHitRange = 0.80f;
+        RaycastHitRange = 5;
     }
 
     private void Update()
@@ -115,7 +115,10 @@ public class EnemyJumper : EnemyBase
     }
     public override void Patrolling()
     {
-
+        if(RaycastHitRange != 5)
+        {
+            RaycastHitRange = 5;
+        }
         if (agent.enabled == false && M_isGrounded)
         {
             agent.enabled = true;
@@ -184,16 +187,19 @@ public class EnemyJumper : EnemyBase
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "WhatIsGround" && RaycastHitRange != 0.80f)
+        if(other.gameObject.tag == "WhatIsGround" && RaycastHitRange != 5)
         {
             AudioManager.instance.Play("SlamGround", 0.5f);
-            RaycastHitRange = 0.80f;
             StartCoroutine(JumpCoolDownCounter(0.5f));
         }
     }
 
     private IEnumerator JumpCoolDownCounter(float CoolDown)
     {
+        while(RaycastHitRange != 5)
+        {
+            RaycastHitRange = 5;
+        }
         yield return new WaitForSeconds(0.5f);
         JumpCoolDown = 0;
         if (JumpCoolDown <= 0 && Jumped == true)

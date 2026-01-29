@@ -148,7 +148,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   Speed: 5
   M_isGrounded: 0
-  RayCastHitRangeAmount: 0.4
+  RayCastHitRangeAmount: 0
 --- !u!195 &72760169798457792
 NavMeshAgent:
   m_ObjectHideFlags: 0

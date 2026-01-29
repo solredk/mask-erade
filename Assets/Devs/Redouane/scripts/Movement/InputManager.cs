@@ -71,4 +71,39 @@ public class InputManager : MonoBehaviour
             uiManager.PauseGame();
         }
     }
+
+    public void DoNoneMask(InputAction.CallbackContext context)
+    {
+        currentMask = Masks.none;
+    }
+
+    public void DoFrogMask(InputAction.CallbackContext context)
+    {
+        currentMask = Masks.frog;
+    }
+
+    public void DoOwlMask(InputAction.CallbackContext context)
+    {
+        currentMask = Masks.owl;
+    }
+
+    public void DoMoleMask(InputAction.CallbackContext context)
+    {
+        currentMask = Masks.mole;
+    }
+
+    public void DoMouseMask(InputAction.CallbackContext context)
+    {
+        currentMask = Masks.mouse;
+    }
+    public void DoBatMask(InputAction.CallbackContext context)
+    {
+        currentMask = Masks.bat;
+    }
+
+    public void DoCatMask(InputAction.CallbackContext context)
+    {
+        currentMask = Masks.cat;
+    }
+
 }

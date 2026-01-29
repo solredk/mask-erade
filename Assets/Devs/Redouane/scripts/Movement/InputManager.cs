@@ -20,6 +20,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private bool lockCursor;
 
     public Masks currentMask = Masks.none;
+
     private void Start()
     {
         if (lockCursor)
@@ -62,15 +63,25 @@ public class InputManager : MonoBehaviour
     public void DoJump(InputAction.CallbackContext context)
     {
         if (playerController == null) return;
+        if (currentMask == Masks.owl)
+        {
+            if (context.performed)
+                playerController.isGliding = true;
+            if (context.canceled)
+                playerController.isGliding = false;
+        }
+        else
+        {
 
-        if (context.performed)
-            playerController.SetJumpHeld(true);
+            if (context.performed)
+                playerController.SetJumpHeld(true);
 
-        if (context.canceled)
-            playerController.SetJumpHeld(false);
+            if (context.canceled)
+                playerController.SetJumpHeld(false);
 
-        if (context.performed)
-            playerController.Jump(currentMask);
+            if (context.performed)
+                playerController.Jump(currentMask);
+        }
     }
     public void DoPause(InputAction.CallbackContext context)
     {
@@ -81,39 +92,37 @@ public class InputManager : MonoBehaviour
             uiManager.PauseGame();
         }
     }
-
-    public void DoNoneMask(InputAction.CallbackContext context)
+    public void OnMask(InputAction.CallbackContext context)
     {
-        currentMask = Masks.none;
-    }
 
-    public void DoFrogMask(InputAction.CallbackContext context)
-    {
-        currentMask = Masks.frog;
+        switch (context.action.name)
+        {
+            case "NoneMask":
+                Debug.Log("Mask changed to: " + context.action.name);
+                currentMask = Masks.none; 
+                break;
+            case "FrogMask":
+                Debug.Log("Mask changed to: " + context.action.name);
+                currentMask = Masks.frog; 
+                break;
+            case "OwlMask": 
+                currentMask = Masks.owl; 
+                break;
+            case "MoleMask": 
+                currentMask = Masks.mole; 
+                break;
+            case "MouseMask": 
+                currentMask = Masks.mouse; 
+                break;
+            case "BatMask": 
+                currentMask = Masks.bat; 
+                break;
+            case "CatMask": 
+                currentMask = Masks.cat; 
+                break;
+            default:
+                Debug.Log("GEEN CASE GEVONDEN VOOR: " + context.action.name);
+                break;
+        }
     }
-
-    public void DoOwlMask(InputAction.CallbackContext context)
-    {
-        currentMask = Masks.owl;
-    }
-
-    public void DoMoleMask(InputAction.CallbackContext context)
-    {
-        currentMask = Masks.mole;
-    }
-
-    public void DoMouseMask(InputAction.CallbackContext context)
-    {
-        currentMask = Masks.mouse;
-    }
-    public void DoBatMask(InputAction.CallbackContext context)
-    {
-        currentMask = Masks.bat;
-    }
-
-    public void DoCatMask(InputAction.CallbackContext context)
-    {
-        currentMask = Masks.cat;
-    }
-
 }

@@ -20,7 +20,7 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private bool lockCursor;
 
-    [SerializeField] private Masks currentMask = Masks.none;
+    public Masks currentMask = Masks.none;
     private void Start()
     {
         if (lockCursor)

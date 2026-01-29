@@ -21,6 +21,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Devs/Redouane/PlayerMovement.unity
     guid: d5229c191d8be8c409aa2e759418af1a
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

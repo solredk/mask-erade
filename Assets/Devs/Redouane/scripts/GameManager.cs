@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+<<<<<<< Updated upstream
         if (currentState == GameState.Playing)
         {
             Time.timeScale = 1.0f;
@@ -90,3 +91,10 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 }
+=======
+
+    }
+
+
+}
+>>>>>>> Stashed changes

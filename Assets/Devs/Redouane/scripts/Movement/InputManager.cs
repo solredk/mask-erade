@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,14 +16,11 @@ public enum Masks
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
-
-    private bool isPaused = false;
+    [SerializeField] private UIManager uiManager;
 
     [SerializeField] private bool lockCursor;
 
     [SerializeField] private Masks currentMask = Masks.none;
-
-    [SerializeField] private GameObject PauseCanvas;
     private void Start()
     {
         if (lockCursor)
@@ -33,12 +31,16 @@ public class InputManager : MonoBehaviour
     }
     public void DoMoving(InputAction.CallbackContext context)
     {
+        if (playerController == null) { return; }
+
         Vector2 moveInput = context.ReadValue<Vector2>();
         playerController.Moving(moveInput, currentMask); 
     } 
 
     public void DoSprint(InputAction.CallbackContext context)
     {
+        if (playerController == null) { return; }
+
         if (context.performed)
         {
             playerController.isSprinting = true;
@@ -51,6 +53,8 @@ public class InputManager : MonoBehaviour
 
     public void DoJump(InputAction.CallbackContext context)
     {
+        if (playerController == null) { return; }
+
         if (context.performed)
         {
             playerController.Jump(currentMask);
@@ -60,21 +64,11 @@ public class InputManager : MonoBehaviour
 
     public void DoPause(InputAction.CallbackContext context)
     {
-        if (isPaused)
+        if (uiManager == null) { return; }
+
+        if (context.performed)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            Time.timeScale = 1f;
-            isPaused = false;
-            PauseCanvas.SetActive(false);
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Time.timeScale = 0f;
-            isPaused = true;
-            PauseCanvas.SetActive(true);
+            uiManager.PauseGame();
         }
     }
 }

@@ -120,6 +120,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 28537dca-ee43-45a3-abdf-703117190dd2
     m_ActionName: 'Moving/Jumping[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8862699935780060693}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: DoPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 307d1056-93f2-4f86-aabe-62768832c8be
+    m_ActionName: 'Moving/PauseGame[/Keyboard/escape,/Keyboard/p]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8862699935780060693}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: DoSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 34843b4d-ac84-466d-8f0e-669114f236bf
+    m_ActionName: 'Moving/Sprinting[/Keyboard/shift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Moving
@@ -138,7 +170,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
   playerController: {fileID: 9061462682744070728}
+  uiManager: {fileID: 0}
   lockCursor: 1
+  currentMask: 0
 --- !u!114 &9061462682744070728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,8 +188,10 @@ MonoBehaviour:
   controller: {fileID: 3472072112811046012}
   cameraTransform: {fileID: 0}
   speed: 5
-  jumpHeight: 2
+  BaseJumpHeight: 4
+  frogJumpHeight: 8
   gravity: -9.81
+  isSprinting: 0
 --- !u!114 &5840993437995565111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +204,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f066b0ac68d9045aeabc71e7bf5761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  lerpTimer: 0
+  chipSpeed: 2
+  damaged: 0
+  healing: 0
+  frontHealthBar: {fileID: 0}
+  backHealthBar: {fileID: 0}
   damageEvent:
     m_PersistentCalls:
       m_Calls: []

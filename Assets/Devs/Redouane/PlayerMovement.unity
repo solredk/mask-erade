@@ -2124,6 +2124,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1309358806}
     - target: {fileID: 9061462682744070728, guid: 730741c8631f2c549966f8a5a6551903, type: 3}
+      propertyPath: BaseJumpHeight
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061462682744070728, guid: 730741c8631f2c549966f8a5a6551903, type: 3}
+      propertyPath: frogJumpHeight
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061462682744070728, guid: 730741c8631f2c549966f8a5a6551903, type: 3}
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 1413855434}

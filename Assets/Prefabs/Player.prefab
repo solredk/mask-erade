@@ -225,10 +225,13 @@ MonoBehaviour:
   cameraTransform: {fileID: 0}
   animator: {fileID: 8438765853547401858}
   speed: 5
-  BaseJumpHeight: 4
-  frogJumpHeight: 8
+  BaseJumpHeight: 8.5
+  frogJumpHeight: 18
   shouldFaceMoveDirection: 1
   gravity: -9.81
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  fallAnimThreshold: -0.1
   isSprinting: 0
   isWalking: 0
 --- !u!114 &5840993437995565111

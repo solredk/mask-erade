@@ -61,12 +61,16 @@ public class InputManager : MonoBehaviour
 
     public void DoJump(InputAction.CallbackContext context)
     {
-        if (playerController == null) { return; }
+        if (playerController == null) return;
 
         if (context.performed)
-        {
+            playerController.SetJumpHeld(true);
+
+        if (context.canceled)
+            playerController.SetJumpHeld(false);
+
+        if (context.performed)
             playerController.Jump(currentMask);
-        }
     }
 
 

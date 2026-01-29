@@ -109,6 +109,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimatorParameters()
     {
         animator.SetBool("Walking", isWalking);
+        if (isWalking)
         animator.SetBool("Sprinting", isSprinting);
         animator.SetBool("Grounded", controller.isGrounded);
     }
@@ -149,10 +150,5 @@ public class PlayerController : MonoBehaviour
     public void SetJumpHeld(bool held)
     {
         jumpHeld = held;
-    }
-
-    private void OnDisable()
-    {
-
     }
 }

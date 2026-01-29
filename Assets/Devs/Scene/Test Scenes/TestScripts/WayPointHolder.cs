@@ -10,6 +10,7 @@ public class WayPointHolder : MonoBehaviour
         index = Mathf.Clamp(index, 0, wayPoints.Length - 1);
         return wayPoints[index];    
     }
+ 
     void Start()
     {
         

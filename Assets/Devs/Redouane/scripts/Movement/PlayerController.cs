@@ -94,5 +94,9 @@ public class PlayerController : MonoBehaviour
             verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
+    private void OnDisable()
+    {
+      
+    }
 
 }

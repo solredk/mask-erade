@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         GameInstance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -40,7 +39,6 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Couldn't find player");
         }
     }
-
 
     private void Update()
     {
@@ -97,6 +95,10 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= PlayerScene;
     }
 }
 

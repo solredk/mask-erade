@@ -3,7 +3,18 @@ using UnityEngine;
 public class WayPointHolder : MonoBehaviour
 {
     public Transform[] wayPoints;
+    private GameObject player;
 
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+
+    }
+    void Start()
+    {
+        print(player);
+    }
     public Transform GetWayPoint(int index)
     {
         if (wayPoints == null || wayPoints.Length == 0) return null;
@@ -11,10 +22,6 @@ public class WayPointHolder : MonoBehaviour
         return wayPoints[index];    
     }
  
-    void Start()
-    {
-        
-    }
 
 
     void Update()

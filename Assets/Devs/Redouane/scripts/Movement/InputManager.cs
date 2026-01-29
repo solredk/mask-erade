@@ -60,8 +60,6 @@ public class InputManager : MonoBehaviour
             playerController.Jump(currentMask);
         }
     }
-
-
     public void DoPause(InputAction.CallbackContext context)
     {
         if (uiManager == null) { return; }

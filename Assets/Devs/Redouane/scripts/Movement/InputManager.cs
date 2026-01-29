@@ -12,7 +12,6 @@ public enum Masks
     bat,
     cat
 }
-
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
@@ -29,6 +28,7 @@ public class InputManager : MonoBehaviour
             Cursor.visible = false;
         }
     }
+
     public void DoMoving(InputAction.CallbackContext context)
     {
         if (playerController == null) { return; }

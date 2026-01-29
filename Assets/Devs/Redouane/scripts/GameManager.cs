@@ -14,8 +14,7 @@ public class GameManager : MonoBehaviour
 
     private GameObject playerObject;
     private GameState currentState;
-    // but i want to grab it through game manager each time we swap scene 
-    // the game object is called Player by name should i hardcode get it like that? 
+   
     [SerializeField] private GameObject pauseScreen;
 
     private void Awake()
@@ -29,7 +28,6 @@ public class GameManager : MonoBehaviour
         GameInstance = this;
         DontDestroyOnLoad(gameObject);
     }
-
     private void Start()
     {
         SceneManager.sceneLoaded += PlayerScene;
@@ -46,7 +44,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-
         if (currentState == GameState.Playing)
         {
             Time.timeScale = 1.0f;
@@ -71,7 +68,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("No more levels. Game complete!");
             return;
         }
-
         SceneManager.LoadScene(nextIndex);
     }
 

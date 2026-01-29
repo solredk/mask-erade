@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -148,5 +149,10 @@ public class PlayerController : MonoBehaviour
     public void SetJumpHeld(bool held)
     {
         jumpHeld = held;
+    }
+
+    private void OnDisable()
+    {
+
     }
 }

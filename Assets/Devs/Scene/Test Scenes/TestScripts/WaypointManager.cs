@@ -15,44 +15,44 @@ public class WaypointManager : MonoBehaviour
 
     private void Awake()
     {
-     
+
 
         if (Instance != null && Instance != this)
         {
-      
+
             Destroy(gameObject);
             return;
         }
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-   
+
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDestroy()
     {
-     
+
         if (Instance == this)
             SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-    
+        CurrentIndex = 0;
         LoadWaypointInformation();
     }
 
     public void LoadWaypointInformation()
     {
-   
+
 
         holder = FindFirstObjectByType<WayPointHolder>();
 
         if (holder == null)
         {
-       
+
             MaxIndex = 0;
             CurrentIndex = 0;
             CurrentRespawnPosition = Vector3.zero;
@@ -61,7 +61,7 @@ public class WaypointManager : MonoBehaviour
 
         if (holder.wayPoints == null || holder.wayPoints.Length == 0)
         {
-         
+
             MaxIndex = 0;
             CurrentIndex = 0;
             CurrentRespawnPosition = Vector3.zero;
@@ -70,12 +70,12 @@ public class WaypointManager : MonoBehaviour
 
         MaxIndex = holder.wayPoints.Length - 1;
         CurrentIndex = Mathf.Clamp(CurrentIndex, 0, MaxIndex);
-    
+
         Transform spawn = holder.GetWayPoint(CurrentIndex);
         if (spawn != null)
         {
             CurrentRespawnPosition = spawn.position;
-      
+
         }
         else
         {
@@ -120,9 +120,9 @@ public class WaypointManager : MonoBehaviour
             OnRespawn.Invoke();
             controller.enabled = false;
             player.position = CurrentRespawnPosition;
-       
+
             controller.enabled = true;
-      
+
         }
     }
 }

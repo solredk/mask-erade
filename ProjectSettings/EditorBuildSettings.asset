@@ -5,12 +5,24 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Devs/Redouane/PlayerMovement.unity
     guid: d5229c191d8be8c409aa2e759418af1a
+  - enabled: 1
+    path: Assets/Scenes/Main Build/MainMenu.unity
+    guid: 14dca7500daa659459309d5f3a3bf77f
+  - enabled: 1
+    path: Assets/Scenes/Main Build/Tutorial.unity
+    guid: 871baa53651fffb45bc00ceaeae97f94
+  - enabled: 1
+    path: Assets/Scenes/Tom's Test Scene.unity
+    guid: 180721a5ecba35343861f8494f78822d
+  - enabled: 1
+    path: Assets/Scenes/Final Scene.unity
+    guid: 4df100b662f287344bef902f282787f3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

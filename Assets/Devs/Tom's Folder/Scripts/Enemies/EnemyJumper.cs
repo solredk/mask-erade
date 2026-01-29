@@ -44,22 +44,6 @@ public class EnemyJumper : EnemyBase
 
         Debug.DrawRay(ray.origin, ray.direction * RaycastHitRange, Color.red);
 
-        if (JumpCoolDown > 0)
-        {
-            JumpCoolDown -= Time.deltaTime;
-        }
-        if (JumpCoolDown < 0 && Jumped == true)
-        {
-            Jumped = false;
-            //AudioManager.instance.gameObject.GetComponent<AudioSource>().volume = 0.50f;
-            //AudioManager.instance.Play("SharkPound");
-        }
-
-        if (Jumped == true && JumpCoolDown > 0 && M_isGrounded == false)
-        {
-            RaycastHitRange = 0.80f;
-        }
-
         if (WalkPointReset > 0)
         {
             WalkPointReset -= Time.deltaTime;
@@ -106,13 +90,8 @@ public class EnemyJumper : EnemyBase
         if (M_isGrounded)
         {
             StartCoroutine(LookAt());
-            //animator.SetBool("Attack", false);
         }
 
-        //if (Jumped && M_isGrounded)
-        //{
-        //    StartCoroutine(JumpCoolDownCounter());
-        //}
         if (Jumped == false && JumpCoolDown <= 0 && M_isGrounded && agent.enabled == false)
         {
             StartCoroutine(JumpMovement(0.1f));
@@ -125,13 +104,13 @@ public class EnemyJumper : EnemyBase
         yield return new WaitForSeconds(CoolDown);
         if (Jumped == false && JumpCoolDown <= 0 && M_isGrounded)
         {
+            AudioManager.instance.Play("ScreamJump", 1);
             Jumped = true;
             JumpCoolDown = 1.5f;
             GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 300);
             GetComponent<Rigidbody>().AddForce(Vector3.up * 200);
             WalkPointSet = false;
             RaycastHitRange = RayCastHitRangeAmount;
-            Debug.Log("Work");
         }
     }
     public override void Patrolling()
@@ -201,5 +180,29 @@ public class EnemyJumper : EnemyBase
 
             yield return null;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "WhatIsGround" && RaycastHitRange != 0.80f)
+        {
+            AudioManager.instance.Play("SlamGround", 0.5f);
+            RaycastHitRange = 0.80f;
+            StartCoroutine(JumpCoolDownCounter());
+        }
+    }
+
+    private IEnumerator JumpCoolDownCounter()
+    {
+        while (JumpCoolDown > 0)
+        {
+            JumpCoolDown -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        if (JumpCoolDown < 0 && Jumped == true)
+        {
+            Jumped = false;
+        }
+        yield return null;
     }
 }

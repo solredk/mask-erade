@@ -43,7 +43,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EquipMaskNone",
+                    "name": "MaskNone",
                     "type": "Button",
                     "id": "1052ff39-499d-4efe-aedf-e872534e5d30",
                     "expectedControlType": "",
@@ -52,7 +52,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EquipMaskFrog",
+                    "name": "MaskFrog",
                     "type": "Button",
                     "id": "36e6b0ae-415e-4a8f-aa07-83a37d8e400b",
                     "expectedControlType": "",
@@ -61,7 +61,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EquipOwlMask",
+                    "name": "OwlMask",
                     "type": "Button",
                     "id": "0ac31f1f-ae37-433b-a9f1-7d217569796a",
                     "expectedControlType": "",
@@ -70,7 +70,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EquipMoleMask",
+                    "name": "MoleMask",
                     "type": "Button",
                     "id": "9221da6a-e31e-4f46-9f41-c8a45adc459c",
                     "expectedControlType": "",
@@ -79,7 +79,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EquipMouseMask",
+                    "name": "MouseMask",
                     "type": "Button",
                     "id": "0b358efe-d1a2-492e-8b55-6bba19650e49",
                     "expectedControlType": "",
@@ -88,7 +88,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EquipBatMask",
+                    "name": "BatMask",
                     "type": "Button",
                     "id": "2e7bd06c-1f21-4105-81b9-6fd6693df9ef",
                     "expectedControlType": "",
@@ -97,7 +97,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EquipCatMask",
+                    "name": "CatMask",
                     "type": "Button",
                     "id": "a2f43474-74da-46c7-9588-f1c5b969b5cf",
                     "expectedControlType": "",
@@ -290,7 +290,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EquipMaskNone",
+                    "action": "MaskNone",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -301,7 +301,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EquipMaskFrog",
+                    "action": "MaskFrog",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -312,7 +312,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EquipOwlMask",
+                    "action": "OwlMask",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -323,7 +323,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EquipMoleMask",
+                    "action": "MoleMask",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -334,7 +334,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EquipMouseMask",
+                    "action": "MouseMask",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -345,7 +345,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EquipBatMask",
+                    "action": "BatMask",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -356,7 +356,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EquipCatMask",
+                    "action": "CatMask",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

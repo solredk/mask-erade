@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df1f216a957e7014f963a6196178978b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointManager
+  holder: {fileID: 0}
   OnWayPointUnlocked:
     m_PersistentCalls:
       m_Calls: []

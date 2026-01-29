@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class WaypointManager : MonoBehaviour
 {
@@ -33,6 +34,18 @@ public class WaypointManager : MonoBehaviour
 
         Transform spawn = holder.GetWayPoint(CurrentIndex);
         CurrentRespawnPosition = spawn != null ? spawn.position : Vector3.zero;
+    }
+
+    public void LoadNextLevel()
+    {
+        int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            Debug.Log("No more levels. Game complete!");
+            return;
+        }
+        SceneManager.LoadScene(nextIndex);
     }
 
     public void Claim(int index)

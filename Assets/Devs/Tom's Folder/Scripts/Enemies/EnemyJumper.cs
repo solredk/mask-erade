@@ -20,8 +20,6 @@ public class EnemyJumper : EnemyBase
 
     private bool WalkPointResetEnable;
 
-    private bool playSoundEffect;
-
     private void Start()
     {
         RaycastHitRange = 0.80f;
@@ -113,7 +111,6 @@ public class EnemyJumper : EnemyBase
             GetComponent<Rigidbody>().AddForce(Vector3.up * 200);
             WalkPointSet = false;
             RaycastHitRange = RayCastHitRangeAmount;
-            playSoundEffect = true;
         }
     }
     public override void Patrolling()

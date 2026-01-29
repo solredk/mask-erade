@@ -1365,8 +1365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8832c85c7c86c9c46bc9161d5be1e69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  PauseCanvas: {fileID: 929522363}
-  isPaused: 0
 --- !u!114 &1309358807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2263,5 +2261,5 @@ SceneRoots:
   - {fileID: 4633239736740206645}
   - {fileID: 648741787}
   - {fileID: 929522367}
-  - {fileID: 4836213052063746927}
   - {fileID: 1309358808}
+  - {fileID: 4836213052063746927}

@@ -1,46 +1,52 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private enum MovementState
-    {
-        gliding,
-        climbing,
-    }
-
     private Vector2 input;
 
     [SerializeField] private CharacterController controller;
     [SerializeField] private Transform cameraTransform;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private float speed = 5f;
     [SerializeField] private float BaseJumpHeight = 2f;
-    [SerializeField] private float frogJumpHeight = 4;
-    private float jumpHeight = 2f;
+    [SerializeField] private float frogJumpHeight = 4f;
+    [SerializeField] private bool shouldFaceMoveDirection = false;
 
     [SerializeField] private float gravity = -9.81f;
 
+    [SerializeField] private float fallMultiplier = 2.5f;
+    [SerializeField] private float lowJumpMultiplier = 2.0f;
+    [SerializeField] private float fallAnimThreshold = -0.1f; 
+
+    private bool jumpHeld;
     private Masks currentMask;
 
     private Vector3 moveDirection;
-
     private float verticalVelocity;
-    public bool isSprinting = false;
+    private float jumpHeight;
 
+    public bool isSprinting = false;
+    public bool isWalking = false;
 
     private void Update()
     {
-        Move();
-        if (currentMask == Masks.frog)
-        {
-            jumpHeight = frogJumpHeight;
-        }
-        else if (currentMask != Masks.frog)
+        animator.SetBool("Walking", isWalking);
+        animator.SetBool("Sprinting", isSprinting);
+        animator.SetBool("Grounded", controller.isGrounded);
+
+        if (currentMask != Masks.frog)
         {
             jumpHeight = BaseJumpHeight;
         }
+        else
+        {
+            jumpHeight = frogJumpHeight;
+        }
 
+        // sprint speed
         if (isSprinting)
         {
             speed = 8f;
@@ -49,10 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             speed = 5f;
         }
-    }
 
-    private void Move()
-    {
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
 
@@ -62,36 +65,57 @@ public class PlayerController : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        moveDirection = (right * input.x + forward * input.y).normalized;
+
+        moveDirection = (forward * input.y + right * input.x).normalized;
 
         if (controller.isGrounded && verticalVelocity < 0f)
         {
             verticalVelocity = -2f;
+            bool isFalling = !controller.isGrounded && verticalVelocity < fallAnimThreshold;
+            animator.SetTrigger("Falling");
         }
 
-        verticalVelocity += gravity * Time.deltaTime;
+        float gravityMultiplier = 1f;
 
-        Vector3 finalMove = (moveDirection * speed) + (Vector3.up * verticalVelocity);
-        controller.Move(finalMove * Time.deltaTime);
+        if (verticalVelocity < 0f)
+        {
+            gravityMultiplier = fallMultiplier;
+        }
+
+        else if (verticalVelocity > 0f && !jumpHeld)
+        {
+            gravityMultiplier = lowJumpMultiplier;
+        }
+
+        verticalVelocity += gravity * gravityMultiplier * Time.deltaTime;
+
+
+        Vector3 velocity = moveDirection * speed;
+        velocity.y = verticalVelocity;
+
+        controller.Move(velocity * Time.deltaTime);
+
+
+        if (shouldFaceMoveDirection && moveDirection.sqrMagnitude > 0.001f)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
+        }
     }
 
     public void Moving(Vector2 moveInput, Masks mask)
     {
         input = moveInput;
         currentMask = mask;
-
-        if (currentMask == Masks.frog)
-        {
-            jumpHeight *= 2;
-        }
     }
 
     public void Jump(Masks mask)
     {
         currentMask = mask;
+
         if (controller.isGrounded)
         {
-            verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            StartCoroutine(JumpDelay());
         }
     }
    
@@ -100,4 +124,17 @@ public class PlayerController : MonoBehaviour
       
     }
 
+    private IEnumerator JumpDelay()
+    {
+        animator.SetTrigger("Jumping");
+
+        yield return new WaitForSeconds(0.3f);
+
+        verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+
+    public void SetJumpHeld(bool held)
+    {
+        jumpHeld = held;
+    }
 }

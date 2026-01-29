@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -108,6 +109,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimatorParameters()
     {
         animator.SetBool("Walking", isWalking);
+        if (isWalking)
         animator.SetBool("Sprinting", isSprinting);
         animator.SetBool("Grounded", controller.isGrounded);
     }

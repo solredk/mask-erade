@@ -64,6 +64,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_f676a129a02749a9abcfb771438e53d9_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 918cbb94b6f6f084ea8b0153930b687c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -121,7 +125,7 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
-    - _BASE_COLOR: {r: 1, g: 0.8561983, b: 0.26666656, a: 0.47058824}
+    - _BASE_COLOR: {r: 1, g: 0.8561983, b: 0.2666665, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

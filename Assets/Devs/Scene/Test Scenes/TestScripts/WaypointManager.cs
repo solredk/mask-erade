@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class WaypointManager : MonoBehaviour
@@ -6,7 +7,8 @@ public class WaypointManager : MonoBehaviour
     public static WaypointManager Instance { get; private set; }
 
     private WayPointHolder holder;
-
+    [SerializeField] private UnityEvent OnWayPointUnlocked;
+    [SerializeField] private UnityEvent OnRespawn;
     public int CurrentIndex { get; private set; } = 0;
     public int MaxIndex { get; private set; } = 0;
     public Vector3 CurrentRespawnPosition { get; private set; }
@@ -82,8 +84,6 @@ public class WaypointManager : MonoBehaviour
     }
     public void Claim(int index)
     {
-   
-
         if (holder == null)
         {
             return;
@@ -97,6 +97,7 @@ public class WaypointManager : MonoBehaviour
         CurrentIndex = Mathf.Clamp(index, 0, MaxIndex);
         Debug.Log($"[WaypointManager] CurrentIndex updated to: {CurrentIndex}");
 
+        OnWayPointUnlocked.Invoke();
         Transform spawn = holder.GetWayPoint(CurrentIndex);
         if (spawn != null)
         {
@@ -111,8 +112,6 @@ public class WaypointManager : MonoBehaviour
 
     public void Respawn(Transform player)
     {
-  
-
         CharacterController controller = player.GetComponent<CharacterController>();
 
         if (controller != null)
@@ -123,11 +122,6 @@ public class WaypointManager : MonoBehaviour
        
             controller.enabled = true;
       
-        }
-        else
-        {
-          
-            player.position = CurrentRespawnPosition;
         }
     }
 }

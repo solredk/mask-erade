@@ -614,6 +614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 825111815}
   - component: {fileID: 825111816}
+  - component: {fileID: 825111818}
   - component: {fileID: 825111817}
   m_Layer: 0
   m_Name: InputManager
@@ -690,10 +691,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 825111814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f16629c1c139f904ca9444cdeadfe454, type: 3}
+  m_Script: {fileID: 11500000, guid: 746cb5dba1b66ca418337f5172e46fce, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  batmask: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  levels: 0100000002000000030000000400000005000000
+--- !u!114 &825111818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825111814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0007a1562da7691439212acac2af4d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  LevelManager: {fileID: 825111817}
 --- !u!1 &1708970426
 GameObject:
   m_ObjectHideFlags: 0

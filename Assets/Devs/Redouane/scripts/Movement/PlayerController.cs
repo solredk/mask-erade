@@ -4,56 +4,56 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Main stats")]
     private Vector2 input;
 
-    [SerializeField] private CharacterController controller;
-    [SerializeField] private Transform cameraTransform;
-    [SerializeField] private Animator animator;
+    [Header("walking stats")]
+    [SerializeField] private float walkSpeed = 5f;
+    [SerializeField] private float sprintSpeed = 8f;
+    private float currentSpeed = 5f;
 
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float BaseJumpHeight = 2f;
-    [SerializeField] private float frogJumpHeight = 4f;
     [SerializeField] private bool shouldFaceMoveDirection = false;
-
-    [SerializeField] private float gravity = -9.81f;
-
-    [SerializeField] private float fallMultiplier = 2.5f;
-    [SerializeField] private float lowJumpMultiplier = 2.0f;
-    [SerializeField] private float fallAnimThreshold = -0.1f; 
-
-    private bool jumpHeld;
-    private Masks currentMask;
-
-    private Vector3 moveDirection;
-    private float verticalVelocity;
-    private float jumpHeight;
 
     public bool isSprinting = false;
     public bool isWalking = false;
 
+    private Masks currentMask;
+
+    private Vector3 moveDirection;
+    private float verticalVelocity;
+
+    [Header("jumping stats")]
+    [SerializeField] private float BaseJumpHeight = 2f;
+    [SerializeField] private float frogJumpHeight = 4f;
+    [SerializeField] private float gravity = -9.81f;
+
+    [SerializeField] private float fallMultiplier = 2.5f;
+    [SerializeField] private float lowJumpMultiplier = 2.0f;
+    [SerializeField] private float fallAnimThreshold = -0.1f;
+    private float jumpHeight;
+    private bool jumpHeld;
+
+    [Header("Camera")]
+    [SerializeField] private Transform cameraTransform;
+
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
+
+    [SerializeField] private CharacterController controller;
+
     private void Update()
     {
-        animator.SetBool("Walking", isWalking);
-        animator.SetBool("Sprinting", isSprinting);
-        animator.SetBool("Grounded", controller.isGrounded);
+        UpdateAnimatorParameters();
 
-        if (currentMask != Masks.frog)
-        {
-            jumpHeight = BaseJumpHeight;
-        }
-        else
-        {
-            jumpHeight = frogJumpHeight;
-        }
+        UpdateMaskStats();
 
-        // sprint speed
         if (isSprinting)
         {
-            speed = 8f;
+            currentSpeed = 8f;
         }
         else
         {
-            speed = 5f;
+            currentSpeed = 5f;
         }
 
         Vector3 forward = cameraTransform.forward;
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
         verticalVelocity += gravity * gravityMultiplier * Time.deltaTime;
 
 
-        Vector3 velocity = moveDirection * speed;
+        Vector3 velocity = moveDirection * currentSpeed;
         velocity.y = verticalVelocity;
 
         controller.Move(velocity * Time.deltaTime);
@@ -101,6 +101,23 @@ public class PlayerController : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
         }
+    }
+
+
+
+    private void UpdateAnimatorParameters()
+    {
+        animator.SetBool("Walking", isWalking);
+        animator.SetBool("Sprinting", isSprinting);
+        animator.SetBool("Grounded", controller.isGrounded);
+    }
+
+    private void UpdateMaskStats()
+    {
+        if (currentMask != Masks.frog)
+            jumpHeight = BaseJumpHeight;
+        else
+            jumpHeight = frogJumpHeight;
     }
 
     public void Moving(Vector2 moveInput, Masks mask)
@@ -117,11 +134,6 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(JumpDelay());
         }
-    }
-   
-    private void OnDisable()
-    {
-      
     }
 
     private IEnumerator JumpDelay()

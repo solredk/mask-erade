@@ -630,6 +630,67 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1001 &1623634298
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 268405538115237707, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.2977715
+      objectReference: {fileID: 0}
+    - target: {fileID: 268405538115237707, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 268405538115237707, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.7595716
+      objectReference: {fileID: 0}
+    - target: {fileID: 268405538115237707, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 268405538115237707, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 268405538115237707, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 268405538115237707, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 268405538115237707, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 268405538115237707, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 268405538115237707, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 715573537428813466, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
+      propertyPath: m_Name
+      value: TempPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 715573537428813466, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 63cab24ede5e2fc4882d9631aa69d66e, type: 3}
 --- !u!1 &1704499349
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,13 +1048,14 @@ GameObject:
   - component: {fileID: 8862699937017481743}
   - component: {fileID: 9061462681322182226}
   - component: {fileID: 5840993438696010797}
+  - component: {fileID: 9061462681322182227}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &915981172509803796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1360,9 +1422,17 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a2f43474-74da-46c7-9588-f1c5b969b5cf
     m_ActionName: 'Moving/EquipCatMask[/Keyboard/6]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8354f109-e147-47a9-aee5-759729565ec6
+    m_ActionName: 'CameraControls/MouseZoom[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1a6b0932-9c62-4414-80f9-35729674cee4
+    m_ActionName: CameraControls/GamepadZoom
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Moving
+  m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 989753358}
 --- !u!136 &6860759525956230772
@@ -1464,13 +1534,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860d037350c97984eae63237c93a561f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  controller: {fileID: 3472072111380856934}
-  cameraTransform: {fileID: 989753359}
-  speed: 5
+  walkSpeed: 5
+  sprintSpeed: 8
+  shouldFaceMoveDirection: 0
+  isSprinting: 0
+  isWalking: 0
   BaseJumpHeight: 4
   frogJumpHeight: 8
   gravity: -9.81
-  isSprinting: 0
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  fallAnimThreshold: -0.1
+  cameraTransform: {fileID: 989753359}
+  animator: {fileID: 9061462681322182227}
+  controller: {fileID: 3472072111380856934}
+--- !u!95 &9061462681322182227
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662710784436483227}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &9206688155127323959
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1531,3 +1630,4 @@ SceneRoots:
   - {fileID: 323367198}
   - {fileID: 1704499352}
   - {fileID: 566391201882425893}
+  - {fileID: 1623634298}

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public abstract class HealthSystem : MonoBehaviour
 {
-    protected int maxHealth = 100;
-    protected int currentHealth;
+    protected float maxHealth = 100;
+    protected float currentHealth;
     protected bool isDead = false;
 
     protected virtual void Start()

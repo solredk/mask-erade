@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveDirection;
 
     private float verticalVelocity;
+    public bool isSprinting = false;
 
 
     private void Update()
@@ -38,6 +39,15 @@ public class PlayerController : MonoBehaviour
         else if (currentMask != Masks.frog)
         {
             jumpHeight = BaseJumpHeight;
+        }
+
+        if (isSprinting)
+        {
+            speed = 8f;
+        }
+        else
+        {
+            speed = 5f;
         }
     }
 

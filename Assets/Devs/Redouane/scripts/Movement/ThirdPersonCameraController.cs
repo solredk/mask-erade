@@ -17,6 +17,7 @@ public class ThirdPersonCameraController : MonoBehaviour
     private CinemachineOrbitalFollow orbital;
     private Vector2 scrollDelta;
 
+
     private float targetZoom;
     private float currentZoom;
 
@@ -28,6 +29,7 @@ public class ThirdPersonCameraController : MonoBehaviour
         controls.CameraControls.MouseZoom.performed += HandleMouseScroll;
 
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         cam = GetComponent<CinemachineCamera>();
         orbital = cam.GetComponent<CinemachineOrbitalFollow>();
@@ -60,9 +62,21 @@ public class ThirdPersonCameraController : MonoBehaviour
                 targetZoom = Mathf.Clamp(orbital.Radius - bumperDelta * zoomSpeed, minDistance, maxDistance);
             }
         }
-
-
         currentZoom = Mathf.Lerp(currentZoom, targetZoom, Time.deltaTime * zoomLerpSpeed);
         orbital.Radius = currentZoom;
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("Enabled mouse settings");
+
+        if (controls != null)
+        {
+            controls.CameraControls.MouseZoom.performed -= HandleMouseScroll;
+            controls.Disable();
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

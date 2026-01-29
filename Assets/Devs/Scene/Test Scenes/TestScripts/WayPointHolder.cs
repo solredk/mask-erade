@@ -8,12 +8,12 @@ public class WayPointHolder : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        
 
     }
     void Start()
     {
-        print(player);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     public Transform GetWayPoint(int index)
     {

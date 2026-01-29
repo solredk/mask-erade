@@ -1,19 +1,21 @@
 using UnityEngine;
 
-public class WayPointScript : MonoBehaviour
+public class FireNextLevel : MonoBehaviour
 {
 
-    [SerializeField] public int index;
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) { return; }
-        WaypointManager.Instance.Claim(index);
+        GameManager.GameInstance.LoadNextLevel();
+        Debug.Log("Fired changing scene");
+
+    }
+    void Start()
+    {
+        
     }
 
-       
-    void Start()
-    { 
-    }
+ 
     void Update()
     {
         

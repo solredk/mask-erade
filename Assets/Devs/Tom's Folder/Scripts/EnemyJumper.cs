@@ -1,5 +1,6 @@
 using System.Collections;
 using System.ComponentModel;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,8 +15,6 @@ public class EnemyJumper : EnemyBase
     public float RayCastHitRangeAmount = 0;
 
     private bool JumpCoolDownReset = true;
-
-    [SerializeField] private Collider Jumper;
 
     private float WalkPointReset;
 
@@ -84,22 +83,24 @@ public class EnemyJumper : EnemyBase
 
         if (Player != null)
         {
-            agent.SetDestination(Player.gameObject.transform.position);
+            if(agent.enabled == true)
+            {
+                agent.SetDestination(Player.transform.position);
+            }
         }
 
     }
 
     public override void AttackPlayer()
     {
+        if (agent.enabled == true)
+        {
+            agent.enabled = false;
+        }
         if (WalkPointSet == true && WalkPointReset != 0)
         {
             WalkPointReset = 0;
             WalkPointResetEnable = false;
-        }
-
-        if (Jumper.enabled == false)
-        {
-            Jumper.enabled = true;
         }
 
         if (M_isGrounded)
@@ -112,41 +113,43 @@ public class EnemyJumper : EnemyBase
         //{
         //    StartCoroutine(JumpCoolDownCounter());
         //}
-        if (Jumped == false && JumpCoolDown <= 0 && M_isGrounded)
+        if (Jumped == false && JumpCoolDown <= 0 && M_isGrounded && agent.enabled == false)
         {
-            agent.enabled = false;
-            WalkPointSet = false;
-            RaycastHitRange = RayCastHitRangeAmount;
-            gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 300);
-            gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 200f);
-            Jumped = true;
-            JumpCoolDown = 1.5f;
+            StartCoroutine(JumpMovement(0.1f));
         }
 
     }
 
+    private IEnumerator JumpMovement(float CoolDown)
+    {
+        yield return new WaitForSeconds(CoolDown);
+        if (Jumped == false && JumpCoolDown <= 0 && M_isGrounded)
+        {
+            Jumped = true;
+            JumpCoolDown = 1.5f;
+            GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 300);
+            GetComponent<Rigidbody>().AddForce(Vector3.up * 200);
+            WalkPointSet = false;
+            RaycastHitRange = RayCastHitRangeAmount;
+            Debug.Log("Work");
+        }
+    }
     public override void Patrolling()
     {
-        if (Jumped == true)
-        {
-            Jumped = false;
-            JumpCoolDown = 0f;
-        }
-
-        if (Jumper.enabled == true)
-        {
-            Jumper.enabled = false;
-        }
-
-        if (JumpCoolDownReset == false)
-        {
-            JumpCoolDownReset = true;
-        }
 
         if (agent.enabled == false && M_isGrounded)
         {
             agent.enabled = true;
             GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+        }
+        if (Jumped == true)
+        {
+            Jumped = false;
+            JumpCoolDown = 0f;
+        }
+        if (JumpCoolDownReset == false)
+        {
+            JumpCoolDownReset = true;
         }
         if (!WalkPointSet) StartCoroutine(WalkCoolDown());
 
@@ -185,13 +188,15 @@ public class EnemyJumper : EnemyBase
     {
         Quaternion LookRotation = Quaternion.LookRotation(Player.transform.position - transform.position);
 
+        LookRotation.x = transform.rotation.x;
+        LookRotation.z = transform.rotation.z;
+        //LookRotation.eulerAngles = new Vector3(transform.rotation.x, LookRotation.y, transform.rotation.z);
+
         float time = 0;
 
         while (time < 1)
         {
-            Debug.Log("Work");
             transform.rotation = Quaternion.Slerp(transform.rotation, LookRotation, time);
-
             time += Time.deltaTime * Speed;
 
             yield return null;

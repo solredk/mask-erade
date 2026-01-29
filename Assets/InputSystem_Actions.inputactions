@@ -52,9 +52,63 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Equip NoneMask",
+                    "type": "Button",
+                    "id": "060a51f8-12b0-48b9-bbb8-0120337156ba",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Equip FrogMask",
+                    "type": "Button",
+                    "id": "8a182e9e-1357-48b2-83fa-bea546264490",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Equip OwlMask",
+                    "type": "Button",
+                    "id": "6e2e2884-c06f-479a-a05a-02e45f36ea82",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Equip MoleMask",
+                    "type": "Button",
+                    "id": "74649071-8fb7-48e2-82dc-af5e06f4ce6b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Equip MouseMask",
+                    "type": "Button",
+                    "id": "aab198eb-899b-4a38-822b-74cf716ae3c5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Equip BatMask",
                     "type": "Button",
                     "id": "f32a1c6e-560d-47b3-9674-70119f6e904a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Equip CatMask",
+                    "type": "Button",
+                    "id": "d88b674c-434c-4fa7-97b5-7b1204069dfc",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -307,11 +361,77 @@
                 {
                     "name": "",
                     "id": "c291a94c-2766-4f00-86d6-096940b0af3b",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/5",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Equip BatMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33a6bd57-bb3d-47e0-9083-c905aa40f293",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip FrogMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "66a7f5c0-4df5-4ce0-9ff3-a07eb874c82e",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip OwlMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62ceee91-e7a0-403b-b275-be6c797494b8",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip MoleMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f9e89d6-e40b-4745-9550-58512b82a091",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip MouseMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1d891bbf-ca63-43c1-bcf2-8d47d47e7cde",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip CatMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7609348f-0645-4a7e-a158-75bb04a9bb7c",
+                    "path": "<Keyboard>/0",
+                    "interactions": "Hold(duration=1,pressPoint=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip NoneMask",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

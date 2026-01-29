@@ -3,44 +3,43 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private enum MovementState
-    {
-        gliding,
-        climbing,
-    }
-
     private Vector2 input;
 
     [SerializeField] private CharacterController controller;
     [SerializeField] private Transform cameraTransform;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private float speed = 5f;
     [SerializeField] private float BaseJumpHeight = 2f;
-    [SerializeField] private float frogJumpHeight = 4;
-    private float jumpHeight = 2f;
+    [SerializeField] private float frogJumpHeight = 4f;
+    [SerializeField] private bool shouldFaceMoveDirection = false;
 
     [SerializeField] private float gravity = -9.81f;
 
     private Masks currentMask;
 
     private Vector3 moveDirection;
-
     private float verticalVelocity;
-    public bool isSprinting = false;
+    private float jumpHeight;
 
+    public bool isSprinting = false;
+    public bool isWalking = false;
 
     private void Update()
     {
-        Move();
-        if (currentMask == Masks.frog)
-        {
-            jumpHeight = frogJumpHeight;
-        }
-        else if (currentMask != Masks.frog)
+        animator.SetBool("Walking", isWalking);
+        animator.SetBool("Sprinting", isSprinting);
+
+        if (currentMask != Masks.frog)
         {
             jumpHeight = BaseJumpHeight;
         }
+        else
+        {
+            jumpHeight = frogJumpHeight;
+        }
 
+        // sprint speed
         if (isSprinting)
         {
             speed = 8f;
@@ -49,10 +48,8 @@ public class PlayerController : MonoBehaviour
         {
             speed = 5f;
         }
-    }
 
-    private void Move()
-    {
+        // camera richtingen
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
 
@@ -62,8 +59,10 @@ public class PlayerController : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        moveDirection = (right * input.x + forward * input.y).normalized;
+        // movement
+        moveDirection = (forward * input.y + right * input.x).normalized;
 
+        // gravity + grounded fix
         if (controller.isGrounded && verticalVelocity < 0f)
         {
             verticalVelocity = -2f;
@@ -71,28 +70,34 @@ public class PlayerController : MonoBehaviour
 
         verticalVelocity += gravity * Time.deltaTime;
 
-        Vector3 finalMove = (moveDirection * speed) + (Vector3.up * verticalVelocity);
-        controller.Move(finalMove * Time.deltaTime);
+        // move inclusief jump
+        Vector3 velocity = moveDirection * speed;
+        velocity.y = verticalVelocity;
+
+        controller.Move(velocity * Time.deltaTime);
+
+        // rotation
+        if (shouldFaceMoveDirection && moveDirection.sqrMagnitude > 0.001f)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
+        }
     }
 
     public void Moving(Vector2 moveInput, Masks mask)
     {
         input = moveInput;
         currentMask = mask;
-
-        if (currentMask == Masks.frog)
-        {
-            jumpHeight *= 2;
-        }
     }
 
     public void Jump(Masks mask)
     {
         currentMask = mask;
+
         if (controller.isGrounded)
         {
+            Debug.Log("Jumping");
             verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
-
 }

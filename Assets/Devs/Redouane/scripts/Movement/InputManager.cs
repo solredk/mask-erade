@@ -24,17 +24,25 @@ public class InputManager : MonoBehaviour
     {
         if (lockCursor)
         {
-            Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
     }
 
     public void DoMoving(InputAction.CallbackContext context)
     {
-        if (playerController == null) { return; }
+        if (playerController == null) return;
 
-        Vector2 moveInput = context.ReadValue<Vector2>();
-        playerController.Moving(moveInput, currentMask); 
+        if (context.performed)
+        {
+            Vector2 moveInput = context.ReadValue<Vector2>();
+            playerController.Moving(moveInput, currentMask);
+            playerController.isWalking = true;
+        }
+        else if (context.canceled)
+        {
+            playerController.Moving(Vector2.zero, currentMask);
+            playerController.isWalking = false;
+        }
     } 
 
     public void DoSprint(InputAction.CallbackContext context)

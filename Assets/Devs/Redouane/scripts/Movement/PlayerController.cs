@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     [Header("Animator")]
     [SerializeField] private Animator baseAnimator;
     [SerializeField] private Animator batAnimator;
+    [SerializeField] private Animator frogAnimator;
 
     [SerializeField] private CharacterController controller;
 
@@ -84,10 +85,20 @@ public class PlayerController : MonoBehaviour
         if (controller.isGrounded && verticalVelocity < 0f)
         {
             verticalVelocity = -2f;
-            bool isFalling = !controller.isGrounded && verticalVelocity < fallAnimThreshold;
-            baseAnimator.SetTrigger("Falling");
-        }
 
+        }
+            bool isFalling = !controller.isGrounded && verticalVelocity < fallAnimThreshold;
+            if (isFalling)
+            {
+                if (currentMask == Masks.FrogMask)
+                {
+                    frogAnimator.SetTrigger("Falling");
+                }
+                if (currentMask == Masks.MaskNone)
+                {
+                    baseAnimator.SetTrigger("Falling");
+                }
+            }
         if (isGliding && !controller.isGrounded && verticalVelocity < 0f)
         {
             // gliding: forceer een zachte daalsnelheid
@@ -161,6 +172,11 @@ public class PlayerController : MonoBehaviour
             baseAnimator.SetBool("Grounded", controller.isGrounded);
         }
 
+        if (currentMask == Masks.FrogMask)
+        {
+            frogAnimator.SetBool("Walking", isWalking);
+            frogAnimator.SetBool("Grounded", controller.isGrounded);
+        }
 
     }
 
@@ -191,8 +207,14 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator JumpDelay()
     {
-        baseAnimator.SetTrigger("Jumping");
-
+        if (currentMask == Masks.FrogMask)
+        {
+            frogAnimator.SetTrigger("Jumping");
+        }
+        else
+        {
+            baseAnimator.SetTrigger("Jumping");
+        }
         yield return new WaitForSeconds(0.3f);
 
         verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);

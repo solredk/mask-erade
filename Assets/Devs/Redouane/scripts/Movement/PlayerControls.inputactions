@@ -52,18 +52,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MaskFrog",
+                    "name": "BatMask",
                     "type": "Button",
-                    "id": "36e6b0ae-415e-4a8f-aa07-83a37d8e400b",
+                    "id": "0ac31f1f-ae37-433b-a9f1-7d217569796a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "OwlMask",
+                    "name": "MaskFrog",
                     "type": "Button",
-                    "id": "0ac31f1f-ae37-433b-a9f1-7d217569796a",
+                    "id": "36e6b0ae-415e-4a8f-aa07-83a37d8e400b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -82,15 +82,6 @@
                     "name": "MouseMask",
                     "type": "Button",
                     "id": "0b358efe-d1a2-492e-8b55-6bba19650e49",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "BatMask",
-                    "type": "Button",
-                    "id": "2e7bd06c-1f21-4105-81b9-6fd6693df9ef",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -297,7 +288,7 @@
                 {
                     "name": "",
                     "id": "177a15db-d2a1-472f-9caa-4a7381a59a8b",
-                    "path": "<Keyboard>/1",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -308,11 +299,11 @@
                 {
                     "name": "",
                     "id": "54c8b4b1-00c5-4432-87c3-759a886da65d",
-                    "path": "<Keyboard>/2",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "OwlMask",
+                    "action": "BatMask",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -335,17 +326,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseMask",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a3d956e5-0f4b-4911-bdb0-e97a34889e8c",
-                    "path": "<Keyboard>/5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "BatMask",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool isWalking = false;
     public bool isGliding = false;
 
-    private Masks currentMask;
+    public Masks currentMask;
 
     private Vector3 moveDirection;
     private float verticalVelocity;
@@ -45,7 +45,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
 
     [Header("Animator")]
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator baseAnimator;
+    [SerializeField] private Animator batAnimator;
+    [SerializeField] private Animator frogAnimator;
 
     [SerializeField] private CharacterController controller;
 
@@ -73,17 +75,30 @@ public class PlayerController : MonoBehaviour
 
         forward.Normalize();
         right.Normalize();
-
+        if (!controller.isGrounded)
+        {
+            batAnimator.SetBool("Gliding", isGliding);
+        }
 
         moveDirection = (forward * input.y + right * input.x).normalized;
 
         if (controller.isGrounded && verticalVelocity < 0f)
         {
             verticalVelocity = -2f;
-            bool isFalling = !controller.isGrounded && verticalVelocity < fallAnimThreshold;
-            animator.SetTrigger("Falling");
-        }
 
+        }
+            bool isFalling = !controller.isGrounded && verticalVelocity < fallAnimThreshold;
+            if (isFalling)
+            {
+                if (currentMask == Masks.FrogMask)
+                {
+                    frogAnimator.SetTrigger("Falling");
+                }
+                if (currentMask == Masks.MaskNone)
+                {
+                    baseAnimator.SetTrigger("Falling");
+                }
+            }
         if (isGliding && !controller.isGrounded && verticalVelocity < 0f)
         {
             // gliding: forceer een zachte daalsnelheid
@@ -127,21 +142,47 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimatorParameters()
     {
-        animator.SetBool("Walking", isWalking);
-        if(isWalking && isSprinting)
+        if (currentMask == Masks.BatMask)
         {
-        animator.SetBool("Sprinting", true);
+            Debug.Log("Bat Animator Updated");
+            batAnimator.SetBool("Walking", isWalking);
+            if (isWalking && isSprinting)
+            {
+                batAnimator.SetBool("Sprinting", true);
+            }
+            else if (!isWalking || !isSprinting)
+            {
+                batAnimator.SetBool("Sprinting", false);
+            }
+            batAnimator.SetBool("Grounded", controller.isGrounded);
         }
-        else if (!isWalking || !isSprinting)
+
+       
+        if (currentMask == Masks.MaskNone)
         {
-            animator.SetBool("Sprinting", false);
+            baseAnimator.SetBool("Walking", isWalking);
+            if(isWalking && isSprinting)
+            {
+            baseAnimator.SetBool("Sprinting", true);
+            }
+            else if (!isWalking || !isSprinting)
+            {
+                baseAnimator.SetBool("Sprinting", false);
+            }
+            baseAnimator.SetBool("Grounded", controller.isGrounded);
         }
-        animator.SetBool("Grounded", controller.isGrounded);
+
+        if (currentMask == Masks.FrogMask)
+        {
+            frogAnimator.SetBool("Walking", isWalking);
+            frogAnimator.SetBool("Grounded", controller.isGrounded);
+        }
+
     }
 
     private void UpdateMaskStats()
     {
-        if (currentMask != Masks.frog)
+        if (currentMask != Masks.FrogMask)
             jumpHeight = BaseJumpHeight;
         else
             jumpHeight = frogJumpHeight;
@@ -166,8 +207,14 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator JumpDelay()
     {
-        animator.SetTrigger("Jumping");
-
+        if (currentMask == Masks.FrogMask)
+        {
+            frogAnimator.SetTrigger("Jumping");
+        }
+        else
+        {
+            baseAnimator.SetTrigger("Jumping");
+        }
         yield return new WaitForSeconds(0.3f);
 
         verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);

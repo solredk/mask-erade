@@ -15,12 +15,12 @@ public class InviciblePlatform : MonoBehaviour
 
     private void Update()
     {
-        if (inputManager.currentMask == Masks.bat && gameObject.layer != visibleLayer)
+        if (inputManager.currentMask == Masks.BatMask && gameObject.layer != visibleLayer)
         {
             gameObject.layer = visibleLayer;
             platformCollider.enabled = true;
         }
-        else if (inputManager.currentMask != Masks.bat && gameObject.layer != invincibleLayer)
+        else if (inputManager.currentMask != Masks.BatMask && gameObject.layer != invincibleLayer)
         {
             gameObject.layer = invincibleLayer;
             platformCollider.enabled = false;

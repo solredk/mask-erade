@@ -68,8 +68,6 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.Log("Enabled mouse settings");
-
         if (controls != null)
         {
             controls.CameraControls.MouseZoom.performed -= HandleMouseScroll;

@@ -144,7 +144,6 @@ public class PlayerController : MonoBehaviour
     {
         if (currentMask == Masks.BatMask)
         {
-            Debug.Log("Bat Animator Updated");
             batAnimator.SetBool("Walking", isWalking);
             if (isWalking && isSprinting)
             {

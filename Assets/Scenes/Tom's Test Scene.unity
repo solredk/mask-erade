@@ -1187,6 +1187,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -864239312136422213, guid: 4d6624235537d8d4b9194d6dc82b42ce, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3368189218539273532, guid: 4d6624235537d8d4b9194d6dc82b42ce, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
@@ -1262,7 +1266,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444413065}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
@@ -5646,12 +5650,17 @@ MonoBehaviour:
   shouldFaceMoveDirection: 1
   isSprinting: 0
   isWalking: 0
+  isGliding: 0
   BaseJumpHeight: 8.5
   frogJumpHeight: 18
   gravity: -9.81
+  glidingGravity: -2
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   fallAnimThreshold: -0.1
+  glideFallSpeed: -4
+  glideSmooth: 8
+  maxFallSpeed: -20
   cameraTransform: {fileID: 1569969015}
   animator: {fileID: 8438765853503764470}
   controller: {fileID: 3472072112784429320}

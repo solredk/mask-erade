@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,8 @@ public class WaypointManager : MonoBehaviour
     [SerializeField] private UnityEvent OnWayPointUnlocked;
     [SerializeField] private UnityEvent OnRespawn;
 
+    public Animator transition;
+    public float TransitionTime = 1f;
     public int CurrentIndex { get; private set; } = 0;
     public int MaxIndex { get; private set; } = 0;
     public Vector3 CurrentRespawnPosition { get; private set; }
@@ -38,13 +41,13 @@ public class WaypointManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-        if (nextIndex >= SceneManager.sceneCountInBuildSettings)
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+    IEnumerator LoadLevel(int nextIndex)
         {
-            Debug.Log("No more levels. Game complete!");
-            return;
-        }
+            transition.SetTrigger("Start");
+        yield return new WaitForSeconds(TransitionTime);
+        Debug.Log("Level Loaded");
         SceneManager.LoadScene(nextIndex);
     }
 

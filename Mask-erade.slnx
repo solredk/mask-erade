@@ -44,6 +44,7 @@
   <Project Path="UnityEditor.UI.csproj" />
   <Project Path="Unity.2D.Sprite.Editor.csproj" />
   <Project Path="Unity.AI.Navigation.Editor.csproj" />
+  <Project Path="Unified.Universal.Blur.csproj" />
   <Project Path="Unity.Multiplayer.Center.Common.csproj" />
   <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="Unity.InputSystem.ForUI.csproj" />
@@ -63,6 +64,7 @@
   <Project Path="Unity.RenderPipelines.Universal.Shaders.csproj" />
   <Project Path="Unity.RenderPipelines.Core.Runtime.Shared.csproj" />
   <Project Path="Unity.2D.Sprite.AIIntegration.Editor.csproj" />
+  <Project Path="Unified.Universal.Blur.Editor.csproj" />
   <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.Entities.csproj" />
   <Project Path="Unity.Collections.Editor.csproj" />

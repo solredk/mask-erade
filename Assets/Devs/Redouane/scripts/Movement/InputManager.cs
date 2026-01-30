@@ -17,10 +17,11 @@ public class InputManager : MonoBehaviour
     [SerializeField] private CharacterController controller;
     [SerializeField] private UIManager uiManager;
 
-    [SerializeField] private GameObject owlMask;
+    [SerializeField] private GameObject batMask;
     [SerializeField] private GameObject noMask;
+    [SerializeField] private GameObject frogMask;
 
-    private bool canChangeForm;
+    private bool canChangeForm = true;
 
     [SerializeField] private bool lockCursor;
 
@@ -57,7 +58,7 @@ public class InputManager : MonoBehaviour
 
     public void DoSprint(InputAction.CallbackContext context)
     {
-        if (playerController == null) { return; }
+        if (playerController == null || currentMask == Masks.FrogMask) { return; }
 
         if (context.performed)
         {
@@ -111,7 +112,7 @@ public class InputManager : MonoBehaviour
                 Debug.Log("Mask changed to: " + context.action.name);
                 currentMask = Masks.MaskNone; 
                 break;
-            case "FrogMask":
+            case "MaskFrog":
                 Debug.Log("Mask changed to: " + context.action.name);
                 currentMask = Masks.FrogMask; 
                 break;
@@ -146,15 +147,25 @@ public class InputManager : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
             controller.height = 3.8f;
             controller.center = new Vector3(0, 0, 0);
-            owlMask.SetActive(false);
+            batMask.SetActive(false);
             noMask.SetActive(true);
+            frogMask.SetActive(false);
         }
         else if (currentMask == Masks.BatMask)
         {
             controller.height = 2f;
             controller.center = new Vector3(0, 1.1f, 0);
-            owlMask.SetActive(true);
+            batMask.SetActive(true);
             noMask.SetActive(false);
+            frogMask.SetActive(false);
+        }
+        else if (currentMask == Masks.FrogMask)
+        {
+            controller.height = 1.28f;
+            controller.center = new Vector3(0, -0.73f, 0);
+            batMask.SetActive(false);
+            noMask.SetActive(false);
+            frogMask.SetActive(true);
         }
     }
 

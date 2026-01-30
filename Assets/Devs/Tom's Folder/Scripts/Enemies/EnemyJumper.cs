@@ -133,38 +133,42 @@ public class EnemyJumper : EnemyBase
         {
             JumpCoolDownReset = true;
         }
-        if (!WalkPointSet) StartCoroutine(WalkCoolDown());
-
-        if (WalkPointSet)
+        if(agent.enabled == true)
         {
-            agent.SetDestination(WalkPoint);
+
+            if (!WalkPointSet) StartCoroutine(WalkCoolDown());
+
+            if (WalkPointSet)
+            {
+                agent.SetDestination(WalkPoint);
+            }
+
+            if (WalkPointSet == true && WalkPointReset <= 0 && WalkPointResetEnable == false)
+            {
+                WalkPointResetEnable = true;
+                WalkPointReset = 5f;
+            }
+
+            if (WalkPointSet == true && WalkPointReset <= 0 && WalkPointResetEnable == true)
+            {
+                WalkPointSet = false;
+                WalkPointResetEnable = false;
+            }
+
+
+
+            Vector3 distanceToWalkpoint = transform.position - WalkPoint;
+
+
+            //Walkpoint reached
+            if (distanceToWalkpoint.magnitude < 1f)
+            {
+                WalkPointSet = false;
+                WalkPointReset = 0;
+                WalkPointResetEnable = false;
+            }
+
         }
-
-        if (WalkPointSet == true && WalkPointReset <= 0 && WalkPointResetEnable == false)
-        {
-            WalkPointResetEnable = true;
-            WalkPointReset = 5f;
-        }
-
-        if (WalkPointSet == true && WalkPointReset <= 0 && WalkPointResetEnable == true)
-        {
-            WalkPointSet = false;
-            WalkPointResetEnable = false;
-        }
-
-
-
-        Vector3 distanceToWalkpoint = transform.position - WalkPoint;
-
-
-        //Walkpoint reached
-        if (distanceToWalkpoint.magnitude < 1f)
-        {
-            WalkPointSet = false;
-            WalkPointReset = 0;
-            WalkPointResetEnable = false;
-        }
-
     }
     private IEnumerator LookAt()
     {
@@ -189,7 +193,7 @@ public class EnemyJumper : EnemyBase
     {
         if(other.gameObject.tag == "WhatIsGround" && RaycastHitRange != 5)
         {
-            AudioManager.instance.Play("SlamGround", 0.5f);
+            AudioManager.instance.Play("SlamGround", 0.2f);
             StartCoroutine(JumpCoolDownCounter(0.5f));
         }
     }

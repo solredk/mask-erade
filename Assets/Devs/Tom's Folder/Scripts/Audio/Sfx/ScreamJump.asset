@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ScreamJump
   m_EditorClassIdentifier: Assembly-CSharp::SoundEffects
   Name: ScreamJump
-  Clip: {fileID: 8300000, guid: 338b31770c131cd4589e6474bd2b6eff, type: 3}
+  Clip: {fileID: 8300000, guid: e1664fa5e2f734b49ba03df9542e0ad6, type: 3}

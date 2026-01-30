@@ -59,17 +59,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void LoadNextLevel()
-    {
-        int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
-
-        if (nextIndex >= SceneManager.sceneCountInBuildSettings)
-        {
-            Debug.Log("No more levels. Game complete!");
-            return;
-        }
-        SceneManager.LoadScene(nextIndex);
-    }
 
     public void LoadLevel(int buildIndex)
     {
